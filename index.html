@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,31 @@
     <link rel="stylesheet" href="style.css">
     <title>Word Length Calcuator</title>
 </head>
+
 <body>
-    <h1>Type a word in the box</h1>
-    <input type="text" id="str">
-    <div id="output"></div>
-    <button id="btn"><h2>Click to calculate word length</h2></button>
+
+    <div id="app">
+        <!-- La directiva 'ref' nos permite operar con un nodo HTML en el script como si lo usaramos con querySelector -->
+        <h1 ref="title">Type a word in the box</h1>
+        <!-- v-html Como asignar un valor a  innerHTML-->
+        <!-- :id asignar dinámicamente un valor al atributo 'id' -->
+        <div v-html="test" :id="nuevoId"> </div>
+        <div> {{ saludar('Pepe') }} </div>
+        <input v-model="textInput" type="text" id="str">
+
+        <div v-for="letters in showTextLength">
+            <span style="border: solid black 2px"> {{ letters }} </span>
+        </div>
+
+        <div :style="{'color': setColorNumber }" style="font-size: 28px; font-weight: 700;" v-if="showTextLength"
+            id="output"> {{ getTextLength }} </div>
+        <button @click="calculate" id="btn">
+            <h2>Click to calculate word length</h2>
+        </button>
+    </div>
+
+    <script src="https://unpkg.com/vue@3"></script>
     <script src="app.js"></script>
 </body>
+
 </html>
